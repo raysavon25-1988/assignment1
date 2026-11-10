@@ -24,13 +24,18 @@ are cars. That is why using specification inheritance (interface) is not necessa
 ------------------------------------------------------------
 Q2. Can both be used? What advantages and disadvantages do you see?
 
-I still think supercalls is more suitable for TASK 1 since the goal is to
-reduce duplicates. Interfaces only reduce denpendency of particular implementations
+I still think supercall implementation  is more suitable for TASK 1 since the goal is to
+reduce duplicates. Interfaces only reduce dependency of particular implementations
 and since both car classes implement identical logic mehtods, there is no use for interface.
 
 ------------------------------------------------------------
 Q3. How does your solution follow the Open-Closed Principle better than the original code?
 Think of an extension that is now possible without modifying existing code.
+
+Our superclass design follows the Open-Closed Principle (OCP) because it allows to us
+to introduce new class car models by extending all the structure from the superclass.
+This allows us to spare resources and include new features or behaviour without modifying
+the other existing models.
 
 
 ------------------------------------------------------------
