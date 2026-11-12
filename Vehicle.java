@@ -47,7 +47,7 @@ Q4. Can you think of any extensions that would require changing existing code?
 import java.awt.*;
 
 // CLASS DEFINITION:
-public abstract class Vehicle {
+public abstract class Vehicle implements Movable{
 
     // FIELDS:
     private int nrDoors;
@@ -55,7 +55,11 @@ public abstract class Vehicle {
     private double currentSpeed;
     private Color color;
     private String modelName;
-
+    /*  TASK 2 Implementation
+    private double x;
+    private double y;
+    private Direction direction;
+*/
     //CONSTRUCTORS BY PARAMETERS:
     // this. = parameter: connect the field
     public Vehicle(int nrDoors, double enginePower,
@@ -66,7 +70,14 @@ public abstract class Vehicle {
         this.color = color;
         this.modelName = modelName;
         this.currentSpeed = 0;
+        /*TASK 2 Implementation
+        this.x = 0;
+        this.y = 0;
+        this.direction = Direction.NORTH;
+
+         */
     }
+
 
     //GETTER METHODS:
     public int getNrDoors() {
@@ -85,10 +96,13 @@ public abstract class Vehicle {
         return modelName;
     }
 
-    public Color getColor() {
-        return color;
+    public Color getColor() {return color; }
 
-    }
+    public double getX() {return x; }
+
+    public double getY() {return y; }
+
+    public Direction getDirection() {return direction; }
 
     //SHARED METHODS: Allows controlled modification of an object's state.
     public void setColor(Color clr) {
@@ -103,6 +117,61 @@ public abstract class Vehicle {
         currentSpeed = 0;
     }
 
+
+    /*  TASK 2 - IMPLEMENTATION - RISHAV
+    @Override
+    public void move() {
+
+        if (direction == Direction.NORTH) {
+            y = y + currentSpeed;
+        }
+        else if (direction == Direction.EAST) {
+            x = x + currentSpeed;
+        }
+        else if (direction == Direction.SOUTH) {
+            y = y - currentSpeed;
+        }
+        else if (direction == Direction.WEST) {
+            x = x - currentSpeed;
+        }
+    }
+
+    // Task 2: Turn left
+    @Override
+    public void turnLeft() {
+
+        if (direction == Direction.NORTH) {
+            direction = Direction.WEST;
+        }
+        else if (direction == Direction.WEST) {
+            direction = Direction.SOUTH;
+        }
+        else if (direction == Direction.SOUTH) {
+            direction = Direction.EAST;
+        }
+        else if (direction == Direction.EAST) {
+            direction = Direction.NORTH;
+        }
+    }
+    // Task 2: Turn right
+    @Override
+    public void turnRight() {
+
+        if (direction == Direction.NORTH) {
+            direction = Direction.EAST;
+        }
+        else if (direction == Direction.EAST) {
+            direction = Direction.SOUTH;
+        }
+        else if (direction == Direction.SOUTH) {
+            direction = Direction.WEST;
+        }
+        else if (direction == Direction.WEST) {
+            direction = Direction.NORTH;
+        }
+    }
+*/
+
     // ABSTRACT METHOD: Declare the method without implementing it.
 
     public abstract double speedFactor();
@@ -116,7 +185,7 @@ public abstract class Vehicle {
 
 
     // TODO 2: Implement decrementSpeed(double amount).
-    public void decrementSpeed(double amount) {
+    private void decrementSpeed(double amount) {
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 

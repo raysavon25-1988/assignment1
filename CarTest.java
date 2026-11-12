@@ -48,7 +48,7 @@ public class CarTest {
         // Expected output: True, true, true, FALSE, true
         //__________________________________________________________________________________________
 
-        reportResult("Saab has 4 doors", saab.getNrDoors() == 3); // it should be 2, not 3.
+        reportResult("Saab has 4 doors", saab.getNrDoors() == 4); // it should be 2... not 4.
         reportResult("Saab has an engine power or", saab.getEnginePower() == 125);
         reportResult("Saab has the color", saab.getColor() == Color.RED);
         reportResult("Saab´s model´s name is", saab.getModelName().equals("Saab95"));
