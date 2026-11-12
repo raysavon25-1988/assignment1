@@ -74,8 +74,10 @@ Each member answers:
 3. What is blocking me, or what do I need help understanding?
 
 ### During lab/ In-person meetings
-
-We discuss unresolved questions from GitHub issues and assignment reflection questions.
+- Every schedule should be agreed the week before to avoid
+uncertainty about when and where we will meet and syncronise 
+team work.
+- We discuss unresolved questions from GitHub issues and assignment reflection questions.
 Any member can be asked to explain code written by another member if necessary, but we should turst each other 
 that everyone of us do the reviews. If not, is better to be honest and ask for expalantion. Better not to stay with doubts.
 We will try to use the lab to procude effectively by:
@@ -98,7 +100,7 @@ Independent time is primarily for:
 
 Each member should contribute both implementation work and reviews.
 
-## 6. GitHub organization
+## 6. GitHub organization (need adjustment)
 
 We will use:
 
@@ -110,9 +112,6 @@ Project overview, final design, how to compile/run/test, architectural decisions
 
 Team protocol, ownership, checklist, task status, questions awaiting clarification, and decisions.
 
-**GitHub Issues**
-
-One issue per major task, containing subtasks, questions answered from (3.A), discussion and reviewer confirmations(3.A).
 
 **Pull Requests**
 
@@ -127,7 +126,8 @@ Assignment reflection answers belong in GitHub documentation rather than being s
 ## 7. Communication rules
 
 - GitHub is the source of truth for task status and decisions.
-- Group chat is used for short coordination and scheduling.
+- Group chat (Whatsapp) is used for short coordination and Discord for online working 
+since is easier to share information (files) and provide Zoom service.
 - Important decisions made verbally must be recorded in GitHub.
 - Questions should identify exactly what is unclear.
 - Reviews should be performed during the next scheduled work period.
@@ -137,19 +137,21 @@ Assignment reflection answers belong in GitHub documentation rather than being s
 
 Every task requires:
 
-- [ ] Requirements understood
-- [ ] Owner's answers or design proposal documented
+- [ ] Requirements understood form meeting 1. 
+- [ ] Owner's answers or design proposal documented. On README. (IS not mandatory for passing)
 - [ ] Reviewer 1 has reviewed and confirmed understanding
 - [ ] Reviewer 2 has reviewed and confirmed understanding
 - [ ] Implementation completed
-- [ ] Relevant tests executed successfully
-- [ ] Both reviewers have examined the implementation
+- [ ] Relevant tests executed successfully. (In test file)
 - [ ] Changes merged into the shared repository
 - [ ] Documentation updated
 - [ ] All members can explain and demonstrate the result
 
 ## 9. Final success criteria
 
-Assignment 1 is complete when the full application compiles and runs, all assignment requirements have been addressed, the repository is ready for submission, and each member is prepared for the oral demonstration.
+Assignment 1 is complete when the full application compiles and runs, 
+all assignment requirements have been addressed, the repository is ready for submission, 
+and each member is prepared for the oral demonstration.
 
-Our objective is not simply to deliver working code. It is to develop a shared understanding of how and why the solution works.
+Our objective is not simply to deliver working code.
+It is to develop a shared understanding of how and why the solution works.

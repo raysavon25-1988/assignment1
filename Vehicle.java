@@ -49,12 +49,12 @@ import java.awt.*;
 // CLASS DEFINITION:
 public abstract class Vehicle {
 
-    // FIELDS: Whit "final" to avoid reassignment in the number of doors for instance.
-    private final int nrDoors;
-    private final double enginePower;
+    // FIELDS:
+    private int nrDoors;
+    private double enginePower;
     private double currentSpeed;
     private Color color;
-    private final String modelName;
+    private String modelName;
 
     //CONSTRUCTORS BY PARAMETERS:
     // this. = parameter: connect the field
@@ -66,7 +66,6 @@ public abstract class Vehicle {
         this.color = color;
         this.modelName = modelName;
         this.currentSpeed = 0;
-
     }
 
     //GETTER METHODS:
@@ -109,41 +108,27 @@ public abstract class Vehicle {
     public abstract double speedFactor();
 
 
-    // CHANGED: the speed can never go above enginePower.
-    // Math.min picks the SMALLER of the two numbers, so enginePower acts as a ceiling.
-    protected void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,
-                getEnginePower());
+// TODO 1:Implement incrementSpeed(double amount).
+
+    private void incrementSpeed(double amount) {
+        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
     }
 
-    // CHANGED: the speed can never go below 0.
-    // Math.max picks the BIGGER of the two numbers, so 0 acts as a floor.
-    protected void decrementSpeed(double amount) {
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+
+    // TODO 2: Implement decrementSpeed(double amount).
+    public void decrementSpeed(double amount) {
+        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 
-    // CHANGED: check the input first, then do the work.
-    // (The old "TODO fix this method" comment is removed, since this is the fix.)
+// TODO 3: Implement gas(double amount). Delegate to the appropriate shared method.
+
     public void gas(double amount) {
-        checkAmount(amount);
         incrementSpeed(amount);
     }
 
-    // CHANGED: same idea for brake.
+// TODO 4: Implement brake(double amount).
+
     public void brake(double amount) {
-        checkAmount(amount);
         decrementSpeed(amount);
     }
-
-    // NEW: private helper. Only Vehicle uses it, so outsiders never see it.
-    // Allowed means 0 <= amount <= 1. Anything else is rejected with an exception.
-    // Writing !(allowed) also catches NaN ("not a number"), which a plain
-    // "amount < 0 || amount > 1" check would let through.
-    private void checkAmount(double amount) {
-        if (!(amount >= 0 && amount <= 1)) {
-            throw new IllegalArgumentException(
-                    "amount must be in [0,1] but was " + amount);
-        }
-    }
 }
-
