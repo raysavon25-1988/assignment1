@@ -1,155 +1,104 @@
+# Task and subtask checklist
 
-# DIT044 — Assignment 1: Team Work Protocol
+## Task 0 — Repository and preparation — Ray
+- [ ] Confirm all three have repository access
+- [ ] All three clone and successfully run the original code
+- [ ] Agree on branch and pull-request conventions
+- [ ] Create README.md and PLAN.md
+- [ ] Agree on the initial architecture discussion and assignments
 
-## 1. Purpose
+## Task 1 — Basic inheritance — Ray
+- [ ] Compare Volvo240 and Saab95 fields, constructors and methods
+- [ ] Identify shared and model-specific responsibilities
+- [ ] Answer implementation vs specification inheritance questions
+- [ ] Propose superclass/subclass structure
+- [ ] Explain how the design improves the Open-Closed Principle
+- [ ] Identify an extension possible without modifying existing code
+- [ ] Identify an extension that would require modifying existing code
+- [ ] Decide public, protected and private visibility
+- [ ] Both reviewers confirm understanding of the proposal
+- [ ] Implement the approved inheritance hierarchy
+- [ ] Check that original functionality is preserved
+- [ ] Both reviewers examine the code and confirm understanding
 
-Our goal is to complete the Assignment 1 efficiently while ensuring that every team member understands the concepts, 
-architecture, code, and reasoning behind the entire solution.
+## Task 2 — Action interfaces — Rishav
+- [ ] Explain the purpose of the Movable interface
+- [ ] Define required move, turnLeft and turnRight operations
+- [ ] Agree on position and direction representation
+- [ ] Both reviewers confirm the proposed behavior
+- [ ] Implement the interface and required movement behavior
+- [ ] Check movement and turning with representative examples
+- [ ] Both reviewers examine code and confirm understanding
 
-Every member must be capable of explaining and demonstrating the complete assignment, 
-including code written by other members.
+## Task 3 — Testing — Abu
+- [ ] Explain unit testing and expected versus actual results
+- [ ] Identify tests for Task 1 functionality
+- [ ] Identify tests for Task 2 movement and turning
+- [ ] Both reviewers confirm test coverage and expected behavior
+- [ ] Implement the test suite using the assignment's test style
+- [ ] Run tests and investigate failures
+- [ ] Both reviewers confirm test logic and results
 
-We aim to complete the work within 10–12 hours per person, 
-preserving 2–4 hours of contingency.
+## ## Task 4 — Sanity Check- All membrs
 
-## 2. Roles
+### Ray — Speed boundaries
 
-Each task has:
+- [ ] Verify that `currentSpeed` never becomes negative.
+- [ ] Verify that `currentSpeed` never exceeds `enginePower`.
+- [ ] Identify boundary cases that could violate these limits.
+- [ ] Write tests for these conditions before implementing corrections.
+- [ ] Implement the necessary speed-boundary checks.
+- [ ] Review Member B's and Member C's work.
+- [ ] Confirm understanding of the complete sanity-check implementation.
 
-- **Owner:** Responsible for analyzing requirements, answering the assignment questions, 
-proposing the design, and implementing or coordinating the implementation.
+### Member B — Acceleration (`gas()`)
 
-- **Reviewer:** Reviews the reasoning, code, the results and confirms understanding
-by raising any error, suggesting a solution or an understanding question.
-This is a very importnat step in order to demonstrate succesfully and to 
-really learn whihc is the central idea of the assignment.
+- [ ] Verify that `gas(amount)` accepts only values between `0` and `1`, inclusive.
+- [ ] Verify that acceleration never decreases `currentSpeed`.
+- [ ] Test normal, boundary, and invalid input values.
+- [ ] Write failing tests before implementing corrections.
+- [ ] Implement the required acceleration validation.
+- [ ] Review Ray's and Member C's work.
+- [ ] Confirm understanding of the complete sanity-check implementation.
 
+### Member C — Braking (`brake()`)
 
-## 3. Workflow for every task
+- [ ] Verify that `brake(amount)` accepts only values between `0` and `1`, inclusive.
+- [ ] Verify that braking never increases `currentSpeed`.
+- [ ] Test normal, boundary, and invalid input values.
+- [ ] Write failing tests before implementing corrections.
+- [ ] Implement the required braking validation.
+- [ ] Review Ray's and Member B's work.
+- [ ] Confirm understanding of the complete sanity-check implementation.
 
-### A. Analyze and Explain 
+### Shared review and integration
 
-The owner writes a concise answer to the assignment questions
-and presents an implementation approach in the corresponding GitHub issue.
-WHy? because that is how we all learn the concepts and can contribute
-efficiently. 
+- [ ] Agree on how invalid inputs should be handled before implementation.
+- [ ] Coordinate changes to shared methods and files to avoid Git conflicts.
+- [ ] Confirm that all three implementations work together.
+- [ ] Run the complete test suite.
+- [ ] Verify that corrections do not break existing functionality.
+- [ ] Both other members review each person's contribution.
+- [ ] All three members confirm they understand the complete solution.
+- [ ] Merge approved changes into `main`.
+- [ ] Update documentation.
 
+### Definition of Done
 
-### B. Review understanding
+Task 4 is complete when:
 
-Both reviewers read the proposal and independently respond:
+- [ ] All sanity-check requirements are satisfied.
+- [ ] All relevant tests pass.
+- [ ] The code has been reviewed by all three members.
+- [ ] The final implementation is integrated into the repository.
+- [ ] Every member can explain the validation logic, speed limits, and expected behavior.
 
-- **Confirmed:** I reviewed it and can explain the reasoning.
-- **Question:** I need clarification before confirming.
-- **Change requested:** I identified a possible problem or alternative.
-
-That's a way to contribute in the task while making sure to each other that we are on the same page when it comes to
-explain the task if necessary. Questions should be addressed in GitHub or at the next in-person lab.
-
-### C. Implement
-
-The owner writes the implementation in it´s  Git branch.
-For longer tasks, coding must be divided among members.
-
-### D. Review code
-
-A pull request is opened. All members go thought the whole assignment one more time 
-to check that everything work properly. This setp should not be so complicated if the memebers review correclty
-during the building process. 
-
-
-### E. Demonstrate understanding
-
-Every member prepares to explain the task, trace important method calls, and justify the architectural decisions.
-
-
-## 4. Meetings and communication
-
-### Stand-up — Beginning of every lab (5–10 minutes)
-
-Each member answers:
-
-1. What have I completed?
-2. What am I working on next, and why?
-3. What is blocking me, or what do I need help understanding?
-
-### During lab/ In-person meetings
-
-We discuss unresolved questions from GitHub issues and assignment reflection questions.
-Any member can be asked to explain code written by another member if necessary, but we should turst each other 
-that everyone of us do the reviews. If not, is better to be honest and ask for expalantion. Better not to stay with doubts.
-We will try to use the lab to procude effectively by:
-
-First - eview completed work, pending pull requests, test failures, outstanding questions, and changes to the task list. 
-Second - produce, write code and develop.
-Third - in the last 15 minutes should finish we by reviewing completed work, pending pull requests, test failures, outstanding questions, and changes to the task list.
-
-
-## 5. Independent work
-
-Independent time is primarily for:
-
-- Preparing answers to assigned questions
-- Writing agreed implementation code
-- Running and investigating tests
-- Reviewing other members' proposals and pull requests
-- Preparing questions for the next lab
-- Updating the task checklist and documentation
-
-Each member should contribute both implementation work and reviews.
-
-## 6. GitHub organization
-
-We will use:
-
-**README.md**
-
-Project overview, final design, how to compile/run/test, architectural decisions, and contributions.
-
-**PLAN.md**
-
-Team protocol, ownership, checklist, task status, questions awaiting clarification, and decisions.
-
-**GitHub Issues**
-
-One issue per major task, containing subtasks, questions answered from (3.A), discussion and reviewer confirmations(3.A).
-
-**Pull Requests**
-
-Used to review code before merging into `main`.
-
-**Java comments**
-
-Used for code-specific explanations where the intention is not obvious. 
-Use the coding reference if the explanation is extensive.**_(need to develop this system)_**
-Assignment reflection answers belong in GitHub documentation rather than being scattered throughout source files.
-
-## 7. Communication rules
-
-- GitHub is the source of truth for task status and decisions.
-- Group chat is used for short coordination and scheduling.
-- Important decisions made verbally must be recorded in GitHub.
-- Questions should identify exactly what is unclear.
-- Reviews should be performed during the next scheduled work period.
-- If a reviewer is blocked, we discuss the issue rather than treating the task as automatically approved.
-
-## 8. Definition of Done
-
-Every task requires:
-
-- [ ] Requirements understood
-- [ ] Owner's answers or design proposal documented
-- [ ] Reviewer 1 has reviewed and confirmed understanding
-- [ ] Reviewer 2 has reviewed and confirmed understanding
-- [ ] Implementation completed
-- [ ] Relevant tests executed successfully
-- [ ] Both reviewers have examined the implementation
-- [ ] Changes merged into the shared repository
-- [ ] Documentation updated
-- [ ] All members can explain and demonstrate the result
-
-## 9. Final success criteria
-
-Assignment 1 is complete when the full application compiles and runs, all assignment requirements have been addressed, the repository is ready for submission, and each member is prepared for the oral demonstration.
-
-Our objective is not simply to deliver working code. It is to develop a shared understanding of how and why the solution works.
+## Final — Integration and demonstration — All members 
+- [ ] All pull requests merged and conflicts resolved
+- [ ] Compile and run the full project
+- [ ] Run complete test suite
+- [ ] Review design explanations and reflection questions
+- [ ] Update README with final architecture and contributions
+- [ ] Conduct oral rehearsal: each member explains unfamiliar code
+- [ ] Verify submission URL and repository access
+- [ ] Submit and prepare for TA demonstration

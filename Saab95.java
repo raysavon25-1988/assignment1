@@ -1,20 +1,38 @@
 import java.awt.*;
 
-public class Saab95 {
+//CLASS:
+public class Saab95 extends Vehicle {
 
-    public boolean turboOn;
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-    
+    //SPEC FIELD
+    private boolean turboOn;
+
+    //CONSTRUCTOR:
+    // super() - Call the Vehicle constructor
+    // this.turboOn -  Initialize turboOn to false
     public Saab95() {
-        nrDoors = 2;
-        color = Color.red;
-        enginePower = 125;
+
+            super(2, 125, Color.RED, "Saab95");
+            this.turboOn = false;
+        }
+
+        // METHOD by Override - an inherited method
+    @Override
+    public double speedFactor() {
+        double turbo = 1;
+        if(turboOn) turbo = 1.3;
+        return getEnginePower() * 0.01 * turbo;
+    }
+
+    public void setTurboOn() {
+        turboOn = true;
+    }
+
+    public void setTurboOff() {
         turboOn = false;
-        modelName = "Saab95";
+    }
+
+
+    /*
         stopEngine();
     }
     
@@ -45,13 +63,7 @@ public class Saab95 {
         currentSpeed = 0;
     }
 
-    public void setTurboOn() {
-        turboOn = true;
-    }
 
-    public void setTurboOff() {
-        turboOn = false;
-    }
     
     public double speedFactor() {
         double turbo = 1;
@@ -76,4 +88,6 @@ public class Saab95 {
     public void brake(double amount) {
         decrementSpeed(amount);
     }
+
+     */
 }

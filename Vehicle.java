@@ -4,7 +4,7 @@ Inheritance Hierarchy: Implementation inheritance
 It seems to be both Saab and Volvo240 be child
 since they have differences in the fields and constructors.
 The rest remains quite similar.
-This is the reason why I choose to create a superclass completing the desing as follow:
+This is the reason why I choose to create a superclass completing the design as follow:
 Superclass =Vehicle --> subclasses = Volvo240 and Saab95
 
 ------------------------------------------------------------
@@ -43,23 +43,92 @@ Q4. Can you think of any extensions that would require changing existing code?
 
 
  */
+
 import java.awt.*;
 
-// Class definition and Fields: Here
-public class Vehicle {
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
+// CLASS DEFINITION:
+public abstract class Vehicle {
 
-    // Constructor: We need to fix this part.
+    // FIELDS:
+    private int nrDoors;
+    private double enginePower;
+    private double currentSpeed;
+    private Color color;
+    private String modelName;
 
-    public Vehicle() {
-        nrDoors = 2;
-        color = Color.red;
-        enginePower = 125;
-        modelName = "Saab95"; // Need to fix
+    //CONSTRUCTORS BY PARAMETERS:
+    // this. = parameter: connect the field
+    public Vehicle(int nrDoors, double enginePower,
+                   Color color, String modelName) {
+
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
+        this.currentSpeed = 0;
     }
 
+    //GETTER METHODS:
+    public int getNrDoors() {
+        return nrDoors;
+    }
+
+    public double getEnginePower() {
+        return enginePower;
+    }
+
+    public double getCurrentSpeed() {
+        return currentSpeed;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
+    public Color getColor() {
+        return color;
+
+    }
+
+    //SHARED METHODS: Allows controlled modification of an object's state.
+    public void setColor(Color clr) {
+        color = clr;
+    }
+
+    public void startEngine() {
+        currentSpeed = 0.1;
+    }
+
+    public void stopEngine() {
+        currentSpeed = 0;
+    }
+
+    // ABSTRACT METHOD: Declare the method without implementing it.
+
+    public abstract double speedFactor();
+
+
+// TODO 1:Implement incrementSpeed(double amount).
+
+    private void incrementSpeed(double amount) {
+        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+    }
+
+
+    // TODO 2: Implement decrementSpeed(double amount).
+    public void decrementSpeed(double amount) {
+        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+    }
+
+// TODO 3: Implement gas(double amount). Delegate to the appropriate shared method.
+
+    public void gas(double amount) {
+        incrementSpeed(amount);
+    }
+
+// TODO 4: Implement brake(double amount).
+
+    public void brake(double amount) {
+        decrementSpeed(amount);
+    }
 }

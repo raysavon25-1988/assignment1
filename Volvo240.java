@@ -1,23 +1,27 @@
 import java.awt.*;
 
-public class Volvo240 {
+public class Volvo240 extends Vehicle {
 
-    public final static double trimFactor = 1.25;
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-    
+    // Volvo-SPEC FIELD:
+    public static final double trimFactor = 1.25;
+
+    // CONSTRUCTOR:
     public Volvo240() {
-        nrDoors = 4;
-        color = Color.black;
-        enginePower = 100;
-        modelName = "Volvo240";
-        stopEngine();
+        super(4, 100, Color.BLACK, "Volvo240");
     }
+
+
+    // METHOD by Override - an inherited method
+    @Override
+    public double speedFactor() {
+        return getEnginePower() * 0.01 * trimFactor;
+    }
+
+
+
+
     
-    public int getNrDoors() {
+    /* public int getNrDoors() {
         return nrDoors;
     }
     public double getEnginePower() {
@@ -65,4 +69,6 @@ public class Volvo240 {
     public void brake(double amount) {
         decrementSpeed(amount);
     }
+
+     */
 }
