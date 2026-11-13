@@ -83,6 +83,67 @@ public class CarTest {
         reportResult("Volvo acceleration", volvo.getCurrentSpeed() == 0.625);
 
 
+        /* Test 4 — Starting and stopping the engine
+        Purpose: Verify the inherited engine methods.
+
+        CREATE volvo = new Volvo240()
+
+CALL volvo.startEngine()
+CHECK currentSpeed ≈ 0.1
+
+CALL volvo.stopEngine()
+CHECK currentSpeed ≈ 0
+
+CALL volvo.startEngine()
+CHECK currentSpeed ≈ 0.1
+         */
+
+        /*
+        Test 5 — Braking
+        Purpose: Verify that braking uses the correct vehicle-specific speed factor.
+        CREATE volvo = new Volvo240()
+
+CALL volvo.gas(0.8)
+CHECK currentSpeed ≈ 1.0
+
+CALL volvo.brake(0.4)
+CHECK currentSpeed ≈ 0.5
+         */
+
+
+
+        /*
+        Test 6 — Object independence
+        Expected: Changing one object's speed does not change the other object's speed.
+
+        CREATE volvo1 = new Volvo240()
+CREATE volvo2 = new Volvo240()
+
+CALL volvo1.gas(0.5)
+
+CHECK volvo1.currentSpeed ≈ 0.625
+CHECK volvo2.currentSpeed ≈ 0
+         */
+
+        /*
+        Test 7 — Polymorphism
+        Purpose: Verify that both models can be used through the same superclass.
+
+        DECLARE car1 as Vehicle = new Volvo240()
+DECLARE car2 as Vehicle = new Saab95()
+
+CALL car2.setTurboOn()
+
+then:
+
+CALL car1.gas(0.5)
+CALL car2.gas(0.5)
+
+CHECK car1.currentSpeed ≈ 0.625
+CHECK car2.currentSpeed ≈ 0.8125
+
+         */
+
 
     }
 }
