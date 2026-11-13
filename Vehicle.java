@@ -167,7 +167,7 @@ public abstract class Vehicle implements Movable{
 
     public abstract double speedFactor();
 
-//---------------------------------------------------
+//---------------------------------------------------git merge --abort
     // TASK 4 STARTS:
     // CHANGED: the speed can never go above enginePower.
     // Math.min picks the SMALLER of the two numbers, so enginePower acts as a ceiling.
