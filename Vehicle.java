@@ -107,28 +107,43 @@ public abstract class Vehicle {
 
     public abstract double speedFactor();
 
-
-// TODO 1:Implement incrementSpeed(double amount).
-
-    private void incrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+//-------------------------------------------------------------------------------------
+    // TASK 4 STARTS:
+    // CHANGED: the speed can never go above enginePower.
+    // Math.min picks the SMALLER of the two numbers, so enginePower acts as a ceiling.
+    protected void incrementSpeed(double amount) {
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,
+                getEnginePower());
     }
 
-
-    // TODO 2: Implement decrementSpeed(double amount).
-    public void decrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+    // CHANGED: the speed can never go below 0.
+    // Math.max picks the BIGGER of the two numbers, so 0 acts as a floor.
+    protected void decrementSpeed(double amount) {
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 
-// TODO 3: Implement gas(double amount). Delegate to the appropriate shared method.
-
+    // CHANGED: check the input first, then do the work.
+    // (The old "TODO fix this method" comment is removed, since this is the fix.)
     public void gas(double amount) {
+        checkAmount(amount);
         incrementSpeed(amount);
     }
 
-// TODO 4: Implement brake(double amount).
-
+    // CHANGED: same idea for brake.
     public void brake(double amount) {
+        checkAmount(amount);
         decrementSpeed(amount);
     }
+
+    // NEW: private helper. Only Vehicle uses it, so outsiders never see it.
+    // Allowed means 0 <= amount <= 1. Anything else is rejected with an exception.
+    // Writing !(allowed) also catches NaN ("not a number"), which a plain
+    // "amount < 0 || amount > 1" check would let through.
+    private void checkAmount(double amount) {
+        if (!(amount >= 0 && amount <= 1)) {
+            throw new IllegalArgumentException(
+                    "amount must be in [0,1] but was " + amount);
+        }
+    }
+    // TASK 4 ENDS.
 }
