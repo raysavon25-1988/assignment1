@@ -47,7 +47,7 @@ Q4. Can you think of any extensions that would require changing existing code?
 import java.awt.*;
 
 // CLASS DEFINITION:
-public abstract class Vehicle {
+public abstract class Vehicle implements Movable{
 //--------------------------------------------------------------------
 
     // FIELDS:
@@ -56,6 +56,10 @@ public abstract class Vehicle {
     private double currentSpeed;
     private Color color;
     private String modelName;
+    private double x;
+    private double y;
+    private Direction direction;
+
     //--------------------------------------------------------------------
 
     //CONSTRUCTORS BY PARAMETERS:
@@ -68,6 +72,9 @@ public abstract class Vehicle {
         this.color = color;
         this.modelName = modelName;
         this.currentSpeed = 0;
+        this.x = 0;
+        this.y = 0;
+        this.direction = Direction.NORTH;
     }
     //--------------------------------------------------------------------
 
@@ -105,6 +112,54 @@ public abstract class Vehicle {
 
     public void stopEngine() {
         currentSpeed = 0;
+    }
+    @Override
+    public void move() {
+
+        if (direction == Direction.NORTH) {
+            y = y + currentSpeed;
+        }
+        else if (direction == Direction.EAST) {
+            x = x + currentSpeed;
+        }
+        else if (direction == Direction.SOUTH) {
+            y = y - currentSpeed;
+        }
+        else if (direction == Direction.WEST) {
+            x = x - currentSpeed;
+        }
+    }
+    @Override
+    public void turnLeft() {
+
+        if (direction == Direction.NORTH) {
+            direction = Direction.WEST;
+        }
+        else if (direction == Direction.WEST) {
+            direction = Direction.SOUTH;
+        }
+        else if (direction == Direction.SOUTH) {
+            direction = Direction.EAST;
+        }
+        else if (direction == Direction.EAST) {
+            direction = Direction.NORTH;
+        }
+    }
+    @Override
+    public void turnRight() {
+
+        if (direction == Direction.NORTH) {
+            direction = Direction.EAST;
+        }
+        else if (direction == Direction.EAST) {
+            direction = Direction.SOUTH;
+        }
+        else if (direction == Direction.SOUTH) {
+            direction = Direction.WEST;
+        }
+        else if (direction == Direction.WEST) {
+            direction = Direction.NORTH;
+        }
     }
 //--------------------------------------------------------------------
 
