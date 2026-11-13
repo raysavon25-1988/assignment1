@@ -55,11 +55,10 @@ public abstract class Vehicle implements Movable{
     private double currentSpeed;
     private Color color;
     private String modelName;
-    /*  TASK 2 Implementation
     private double x;
     private double y;
     private Direction direction;
-*/
+
     //CONSTRUCTORS BY PARAMETERS:
     // this. = parameter: connect the field
     public Vehicle(int nrDoors, double enginePower,
@@ -70,12 +69,9 @@ public abstract class Vehicle implements Movable{
         this.color = color;
         this.modelName = modelName;
         this.currentSpeed = 0;
-        /*TASK 2 Implementation
         this.x = 0;
         this.y = 0;
         this.direction = Direction.NORTH;
-
-         */
     }
 
 
@@ -118,7 +114,6 @@ public abstract class Vehicle implements Movable{
     }
 
 
-    /*  TASK 2 - IMPLEMENTATION - RISHAV
     @Override
     public void move() {
 
@@ -170,7 +165,7 @@ public abstract class Vehicle implements Movable{
             direction = Direction.NORTH;
         }
     }
-*/
+
 
     // ABSTRACT METHOD: Declare the method without implementing it.
 
