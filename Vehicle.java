@@ -48,6 +48,7 @@ import java.awt.*;
 
 // CLASS DEFINITION:
 public abstract class Vehicle {
+//--------------------------------------------------------------------
 
     // FIELDS:
     private int nrDoors;
@@ -55,6 +56,7 @@ public abstract class Vehicle {
     private double currentSpeed;
     private Color color;
     private String modelName;
+    //--------------------------------------------------------------------
 
     //CONSTRUCTORS BY PARAMETERS:
     // this. = parameter: connect the field
@@ -67,6 +69,7 @@ public abstract class Vehicle {
         this.modelName = modelName;
         this.currentSpeed = 0;
     }
+    //--------------------------------------------------------------------
 
     //GETTER METHODS:
     public int getNrDoors() {
@@ -89,6 +92,7 @@ public abstract class Vehicle {
         return color;
 
     }
+    //--------------------------------------------------------------------
 
     //SHARED METHODS: Allows controlled modification of an object's state.
     public void setColor(Color clr) {
@@ -102,6 +106,7 @@ public abstract class Vehicle {
     public void stopEngine() {
         currentSpeed = 0;
     }
+//--------------------------------------------------------------------
 
     // ABSTRACT METHOD: Declare the method without implementing it.
 
@@ -123,7 +128,6 @@ public abstract class Vehicle {
     }
 
     // CHANGED: check the input first, then do the work.
-    // (The old "TODO fix this method" comment is removed, since this is the fix.)
     public void gas(double amount) {
         checkAmount(amount);
         incrementSpeed(amount);
