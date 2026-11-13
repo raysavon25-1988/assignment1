@@ -46,7 +46,6 @@ public class CarTest {
 
 
         // Expected output: True, true, true, FALSE, true
-        //__________________________________________________________________________________________
 
         reportResult("Saab has 4 doors", saab.getNrDoors() == 4); // it should be 2... not 4.
         reportResult("Saab has an engine power or", saab.getEnginePower() == 125);
@@ -55,6 +54,8 @@ public class CarTest {
         reportResult("Saab has the current speed on", saab.getCurrentSpeed() == 0);
 
         //Expected output: False, Tru, true,true, True
+
+
         //-------------------------------------------------------------------------
 
 
@@ -86,7 +87,7 @@ public class CarTest {
         /* Test 4 — Starting and stopping the engine
         Purpose: Verify the inherited engine methods.
 
-        CREATE volvo = new Volvo240()
+
 
 CALL volvo.startEngine()
 CHECK currentSpeed ≈ 0.1
