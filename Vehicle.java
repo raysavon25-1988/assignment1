@@ -167,7 +167,7 @@ public abstract class Vehicle implements Movable{
 
     public abstract double speedFactor();
 
-//-------------------------------------------------------------------------------------
+//---------------------------------------------------
     // TASK 4 STARTS:
     // CHANGED: the speed can never go above enginePower.
     // Math.min picks the SMALLER of the two numbers, so enginePower acts as a ceiling.
@@ -194,7 +194,7 @@ public abstract class Vehicle implements Movable{
         decrementSpeed(amount);
     }
 
-    // NEW: private helper. Only Vehicle uses it, so outsiders never see it.
+    //  private helper. Only Vehicle uses it, so outsiders never see it.
     // Allowed means 0 <= amount <= 1. Anything else is rejected with an exception.
     // Writing !(allowed) also catches NaN ("not a number"), which a plain
     // "amount < 0 || amount > 1" check would let through.

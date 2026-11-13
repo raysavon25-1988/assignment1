@@ -45,7 +45,7 @@ public class CarTest {
         reportResult("Saab has the current speed on", volvo.getCurrentSpeed() == 0);
 
 
-        // Expected output: True, true, true, FALSE, true
+        // Expected output: True, true, true, True, true
         //__________________________________________________________________________________________
 
         reportResult("Saab has 4 doors", saab.getNrDoors() == 4); // it should be 2... not 4.
@@ -69,80 +69,83 @@ public class CarTest {
 
         // TEST 3 — Saab95 turbo behavior
 
-        volvo.gas(0.5);
+        Saab95 saab1 = new Saab95();
+        Saab95 saab2 = new Saab95();
 
-        // CALL saab2.setTurboOn()
-        //
-        //CALL saab1.gas(0.5)
-        //CALL saab2.gas(0.5)
-        //
-        //CHECK saab1.currentSpeed ≈ 0.625
-        //CHECK saab2.currentSpeed ≈ 0.8125
-        //CHECK saab2.currentSpeed > saab1.currentSpeed
+        saab2.setTurboOn();
+
+        saab1.gas(0.5);
+        saab2.gas(0.5);
+
+        reportResult("Saab without turbo",
+                saab1.getCurrentSpeed() == 0.625);
+
+        reportResult("Saab with turbo",
+                saab2.getCurrentSpeed() == 0.8125);
 
         reportResult("Volvo acceleration", volvo.getCurrentSpeed() == 0.625);
 
 
         /* Test 4 — Starting and stopping the engine
-        Purpose: Verify the inherited engine methods.
+        Purpose: Verify the inherited engine methods.*/
 
-        CREATE volvo = new Volvo240()
 
-CALL volvo.startEngine()
-CHECK currentSpeed ≈ 0.1
+        volvo.startEngine();
+        reportResult("Engine starts", volvo.getCurrentSpeed() == 0.1);
 
-CALL volvo.stopEngine()
-CHECK currentSpeed ≈ 0
+        volvo.stopEngine();
+        reportResult("Engine stops", volvo.getCurrentSpeed() == 0);
 
-CALL volvo.startEngine()
-CHECK currentSpeed ≈ 0.1
-         */
+        volvo.startEngine();
+        reportResult("Engine starts again", volvo.getCurrentSpeed() == 0.1);
+
 
         /*
         Test 5 — Braking
-        Purpose: Verify that braking uses the correct vehicle-specific speed factor.
-        CREATE volvo = new Volvo240()
+        Purpose: Verify that braking uses the correct vehicle-specific speed factor.*/
+         Volvo240 brakingVolvo = new Volvo240();
 
-CALL volvo.gas(0.8)
-CHECK currentSpeed ≈ 1.0
+        brakingVolvo.gas(0.8);
+        reportResult("Volvo speed after gas(0.8) is 1.0",
+                brakingVolvo.getCurrentSpeed() == 1.0);
 
-CALL volvo.brake(0.4)
-CHECK currentSpeed ≈ 0.5
-         */
+        brakingVolvo.brake(0.4);
+        reportResult("Volvo speed after brake(0.4) is 0.5",
+                brakingVolvo.getCurrentSpeed() == 0.5);
 
 
 
         /*
         Test 6 — Object independence
-        Expected: Changing one object's speed does not change the other object's speed.
+        Expected: Changing one object's speed does not change the other object's speed.*/
+        Volvo240 volvo1 = new Volvo240();
+        Volvo240 volvo2 = new Volvo240();
 
-        CREATE volvo1 = new Volvo240()
-CREATE volvo2 = new Volvo240()
+        volvo1.gas(0.5);
 
-CALL volvo1.gas(0.5)
+        reportResult("Volvo1 speed is 0.625",
+                volvo1.getCurrentSpeed() == 0.625);
 
-CHECK volvo1.currentSpeed ≈ 0.625
-CHECK volvo2.currentSpeed ≈ 0
-         */
+        reportResult("Volvo2 speed remains 0",
+                volvo2.getCurrentSpeed() == 0);
 
         /*
         Test 7 — Polymorphism
-        Purpose: Verify that both models can be used through the same superclass.
+        Purpose: Verify that both models can be used through the same superclass.*/
 
-        DECLARE car1 as Vehicle = new Volvo240()
-DECLARE car2 as Vehicle = new Saab95()
+        Vehicle car1 = new Volvo240();
+        Vehicle car2 = new Saab95();
 
-CALL car2.setTurboOn()
+        ((Saab95) car2).setTurboOn();
 
-then:
+        car1.gas(0.5);
+        car2.gas(0.5);
 
-CALL car1.gas(0.5)
-CALL car2.gas(0.5)
+        reportResult("Volvo speed", car1.getCurrentSpeed() == 0.625);
 
-CHECK car1.currentSpeed ≈ 0.625
-CHECK car2.currentSpeed ≈ 0.8125
+        reportResult("Saab speed", car2.getCurrentSpeed() == 0.8125);
 
-         */
+
 
 
     }
