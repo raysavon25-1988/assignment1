@@ -69,3 +69,4 @@ The Open-Closed Principle does not mean that existing code must never be modifie
 
 In our case, adding a new car model can be achieved through inheritance. However, changing the functionality shared by all vehicles may require modifying the superclass.
 
+END 
